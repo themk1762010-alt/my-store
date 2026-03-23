@@ -29,45 +29,100 @@ const products = [
 
 export default function Home() {
   return (
-    <div style={{ background: "#0a0a0a", color: "white", minHeight: "100vh", fontFamily: "Arial" }}>
-      
-      <h1 style={{ textAlign: "center", padding: "20px" }}>
-        TREAZURE 🔥 Earbuds Deals
-      </h1>
+    <div style={{ background: "#000", color: "white", fontFamily: "Arial" }}>
 
+      {/* NAVBAR */}
+      <div style={{
+        display: "flex",
+        justifyContent: "space-between",
+        padding: "20px 40px",
+        borderBottom: "1px solid #222"
+      }}>
+        <h2 style={{ letterSpacing: "4px" }}>TREAZURE</h2>
+        <span style={{ color: "gray" }}>Premium Deals</span>
+      </div>
+
+      {/* HERO */}
+      <div style={{
+        textAlign: "center",
+        padding: "80px 20px"
+      }}>
+        <h1 style={{ fontSize: "40px" }}>
+          🔥 Trending Earbuds You Can’t Miss
+        </h1>
+        <p style={{ color: "#aaa", marginTop: "10px" }}>
+          Limited-time deals curated for smart buyers
+        </p>
+      </div>
+
+      {/* PRODUCTS */}
       <div style={{
         display: "grid",
-        gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
-        gap: "20px",
+        gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+        gap: "25px",
         padding: "20px"
       }}>
         {products.map((p) => (
           <div key={p.id} style={{
             background: "#111",
-            borderRadius: "10px",
-            padding: "10px"
-          }}>
-            <img src={p.image} style={{ width: "100%", borderRadius: "10px" }} />
-            <h3>{p.name}</h3>
-            <p style={{ color: "gray" }}>{p.price}</p>
-            <p style={{ color: "lightgreen" }}>{p.rating}</p>
+            borderRadius: "15px",
+            overflow: "hidden",
+            transition: "0.3s",
+            cursor: "pointer"
+          }}
+          onMouseEnter={(e) => e.currentTarget.style.transform = "scale(1.05)"}
+          onMouseLeave={(e) => e.currentTarget.style.transform = "scale(1)"}
+          >
+            <img src={p.image} style={{ width: "100%", height: "220px", objectFit: "cover" }} />
 
-            <a href={p.link} target="_blank">
-              <button style={{
-                width: "100%",
-                padding: "10px",
-                marginTop: "10px",
-                background: "white",
-                color: "black",
-                border: "none",
-                borderRadius: "5px",
-                fontWeight: "bold"
-              }}>
-                Buy Now 🔥
-              </button>
-            </a>
+            <div style={{ padding: "15px" }}>
+              <h3>{p.name}</h3>
+              <p style={{ color: "#aaa" }}>{p.price}</p>
+              <p style={{ color: "lightgreen" }}>{p.rating}</p>
+
+              <a href={p.link} target="_blank">
+                <button style={{
+                  width: "100%",
+                  padding: "12px",
+                  marginTop: "10px",
+                  background: "#fff",
+                  color: "#000",
+                  border: "none",
+                  borderRadius: "8px",
+                  fontWeight: "bold",
+                  cursor: "pointer"
+                }}>
+                  Grab Deal 🔥
+                </button>
+              </a>
+            </div>
           </div>
         ))}
+      </div>
+
+      {/* TRUST SECTION */}
+      <div style={{
+        textAlign: "center",
+        padding: "50px 20px",
+        borderTop: "1px solid #222"
+      }}>
+        <h2>Trusted by 10,000+ Smart Buyers</h2>
+        <p style={{ color: "#aaa", marginTop: "10px" }}>
+          ✔ Best Amazon Deals <br />
+          ✔ Verified Products <br />
+          ✔ Updated Daily
+        </p>
+      </div>
+
+      {/* FOOTER */}
+      <div style={{
+        textAlign: "center",
+        padding: "20px",
+        borderTop: "1px solid #222",
+        color: "gray",
+        fontSize: "14px"
+      }}>
+        © 2026 TREAZURE
       </div>
 
     </div>
