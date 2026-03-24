@@ -11,7 +11,7 @@ export default function Home() {
       id: 1,
       name: "boAt Airdopes 800",
       price: "₹1299 (80% OFF)",
-      image: "/boat.jpg",
+      image: "https://images.unsplash.com/photo-1585386959984-a41552262b3e",
       link: "https://amzn.to/47LyL4Y"
     },
     {
@@ -37,7 +37,7 @@ export default function Home() {
   return (
     <div style={{ background: "#000", color: "white", minHeight: "100vh", fontFamily: "Arial" }}>
 
-      {/* 🔍 TOP BAR */}
+      {/* 🔝 TOP BAR */}
       <div style={{
         display: "flex",
         justifyContent: "space-between",
@@ -47,33 +47,44 @@ export default function Home() {
 
         <div></div>
 
-        {/* SEARCH BAR */}
+        {/* 🔍 SEARCH */}
         <input
           type="text"
           placeholder="Search products..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           style={{
-            padding: "10px 20px",
-            borderRadius: "20px",
+            padding: "12px 20px",
+            borderRadius: "30px",
             border: "none",
             width: "40%",
-            outline: "none"
+            background: "#111",
+            color: "white",
+            outline: "none",
+            fontSize: "15px"
           }}
         />
 
-        {/* CONTACT */}
-        <a href="mailto:themk1762010@gmail.com" style={{ color: "white", textDecoration: "none" }}>
-          Contact Us
+        {/* 📩 CONTACT */}
+        <a
+          href="mailto:themk1762010@gmail.com"
+          style={{
+            color: "white",
+            textDecoration: "none",
+            fontSize: "15px",
+            opacity: 0.8
+          }}
+        >
+          Contact
         </a>
       </div>
 
-      {/* 🏆 TITLE */}
-      <div style={{ textAlign: "center", marginTop: "30px" }}>
+      {/* 🏆 BRAND */}
+      <div style={{ textAlign: "center", marginTop: "20px" }}>
         <h1 style={{
-          fontSize: "60px",
+          fontSize: "70px",
           fontWeight: "bold",
-          letterSpacing: "3px"
+          letterSpacing: "5px"
         }}>
           TREAZURE
         </h1>
@@ -84,16 +95,16 @@ export default function Home() {
           color: "#aaa",
           lineHeight: "1.6"
         }}>
-          Discover the best deals on trending products. We handpick high-quality items
-          so you don’t waste time searching. Simple, smart, and reliable shopping.
+          Discover the best deals on trending products. We handpick high-quality
+          items so you don’t waste time searching. Smart shopping starts here.
         </p>
       </div>
 
-      {/* 🔥 SECTION TITLE */}
+      {/* 🔥 SECTION */}
       <h2 style={{
         textAlign: "center",
         marginTop: "40px",
-        fontSize: "26px",
+        fontSize: "24px",
         fontWeight: "bold"
       }}>
         🔥 Trending Earbuds You Can’t Miss
@@ -103,10 +114,10 @@ export default function Home() {
       <div style={{
         display: "grid",
         gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-        gap: "25px",
+        gap: "30px",
         padding: "40px"
       }}>
-        
+
         {filteredProducts.map((p) => (
           <div
             key={p.id}
@@ -117,8 +128,14 @@ export default function Home() {
               transition: "0.3s",
               cursor: "pointer"
             }}
-            onMouseEnter={(e) => e.currentTarget.style.transform = "scale(1.05)"}
-            onMouseLeave={(e) => e.currentTarget.style.transform = "scale(1)"}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = "scale(1.05)";
+              e.currentTarget.style.boxShadow = "0 0 20px rgba(255,255,255,0.1)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "scale(1)";
+              e.currentTarget.style.boxShadow = "none";
+            }}
           >
             <img
               src={p.image}
