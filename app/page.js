@@ -11,7 +11,7 @@ export default function Home() {
       id: 1,
       name: "boAt Airdopes 800",
       price: "₹1299 (80% OFF)",
-      image: "https://images.unsplash.com/photo-1585386959984-a41552262b3e",
+      image: "/boat.jpg",
       link: "https://amzn.to/47LyL4Y"
     },
     {
