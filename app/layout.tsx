@@ -15,6 +15,9 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "TREAZURE",
   description: "Best deals on trending products",
+  icons: {
+    icon: "/icon.png",
+  },
 };
 
 export default function RootLayout({
