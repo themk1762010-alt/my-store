@@ -54,7 +54,22 @@ export default function Home() {
           Limited-time deals curated for smart buyers
         </p>
       </div>
-
+{/* INTRO SECTION */}
+<div style={{
+  textAlign: "center",
+  padding: "20px 40px",
+  maxWidth: "800px",
+  margin: "0 auto"
+}}>
+  <p style={{ color: "#ccc", fontSize: "16px", lineHeight: "1.6" }}>
+    Welcome to <strong>TREAZURE</strong> — your go-to destination for discovering 
+    the best deals on trending products. We carefully curate high-quality items 
+    from trusted platforms like Amazon, ensuring you get the best value for your money. 
+    Our goal is to make your shopping experience simple, reliable, and enjoyable. 
+    Every product featured here is selected based on quality, reviews, and popularity, 
+    so you can shop with confidence.
+  </p>
+</div>
       {/* PRODUCTS */}
       <div style={{
         display: "grid",
