@@ -25,14 +25,11 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
- return (
+return (
   <html lang="en">
     <head>
       <link rel="icon" href="/icon.png" />
     </head>
-
-    <body>
-      {children}
-    </body>
+    <body>{children}</body>
   </html>
 );
