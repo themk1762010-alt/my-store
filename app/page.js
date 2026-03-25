@@ -192,7 +192,13 @@ export default function Home() {
           TREAZURE
         </h1>
 
-        <a href="mailto:themk1762010@gmail.com">Contact Us</a>
+        <a 
+  href="mailto:themk1762010@gmail.com?subject=Regarding Treazure&body=Hi, I visited your website..."
+  style={{ textDecoration: "none", color: "white" }}
+>
+  Contact Us
+</a>
+  
       </div>
 
       {/* SEARCH */}
