@@ -1,13 +1,4 @@
-import type { Metadata } from "next";
 import "./globals.css";
-
-export const metadata: Metadata = {
-  title: "TREAZURE",
-  description: "Smart deals on trending products",
-  icons: {
-    icon: "/icon.png",
-  },
-};
 
 export default function RootLayout({
   children,
@@ -16,9 +7,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
-        {children}
-      </body>
+      <head>
+        <link rel="icon" href="/icon.png" />
+      </head>
+      <body>{children}</body>
     </html>
   );
 }
