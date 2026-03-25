@@ -198,7 +198,10 @@ export default function Home() {
 >
   Contact Us
 </a>
+<<<<<<< HEAD
   
+=======
+>>>>>>> c51db13 (first commit with icon)
       </div>
 
       {/* SEARCH */}
@@ -271,4 +274,8 @@ export default function Home() {
       )}
     </div>
   );
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> c51db13 (first commit with icon)
