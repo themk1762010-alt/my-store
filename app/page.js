@@ -1,172 +1,132 @@
 "use client";
-
 import { useState } from "react";
 
 export default function Home() {
   const [search, setSearch] = useState("");
-  const [active, setActive] = useState("all");
 
-  const data = {
-    trending: [
-      {
-        name: "HealthSense Kitchen Weight Machine",
-        price: "₹699",
-        reviews: "⭐ 4.1 (8.3K)",
-        image: "https://images.unsplash.com/photo-1586201375761-83865001e31c",
-        link: "#",
-      },
-    ],
-
-    tech: {
-      phones: [
-        {
-          name: "Realme Narzo 80 Pro 5G",
-          price: "₹19999",
-          reviews: "⭐ 4.3 (2.2K)",
-          image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9",
-          link: "https://amzn.to/3Pu5OV1",
-        },
-      ],
-      laptops: [
-        {
-          name: "HP 15 13th Gen i3",
-          price: "₹45990",
-          reviews: "⭐ 4.1 (2.2K)",
-          image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8",
-          link: "https://amzn.to/4t43Nx9",
-        },
-      ],
-      speakers: [
-        {
-          name: "Tribit XSound Go",
-          price: "₹2843",
-          reviews: "⭐ 4.3 (18K)",
-          image: "https://images.unsplash.com/photo-1585386959984-a41552262b3e",
-          link: "https://amzn.to/4bxkCec",
-        },
-      ],
-      tabs: [
-        {
-          name: "Honor Pad X9",
-          price: "₹15126",
-          reviews: "⭐ 4.3 (1.8K)",
-          image: "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04",
-          link: "https://amzn.to/4dGv44g",
-        },
-      ],
-      earbuds: [
-        {
-          name: "OnePlus Nord Buds 3r",
-          price: "₹1599",
-          reviews: "⭐ 4.2 (40K)",
-          image: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df",
-          link: "https://amzn.to/3NJisyH",
-        },
-      ],
-      watches: [
-        {
-          name: "boAt Wave Call 3",
-          price: "₹1399",
-          reviews: "⭐ 4.1 (25K)",
-          image: "https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b",
-          link: "https://amzn.to/4c3MQgE",
-        },
-      ],
+  const products = [
+    // TECH
+    {
+      name: "Realme Narzo 80 Pro 5G",
+      price: "₹19,999",
+      reviews: "4.3 (2.2K)",
+      link: "https://amzn.to/3Pu5OV1",
+      category: "tech",
+    },
+    {
+      name: "HP 15 13th Gen i3 Laptop",
+      price: "₹45,990",
+      reviews: "4.1 (2.2K)",
+      link: "https://amzn.to/4t43Nx9",
+      category: "tech",
+    },
+    {
+      name: "Tribit XSound Go Speaker",
+      price: "₹2,843",
+      reviews: "4.3 (18K)",
+      link: "https://amzn.to/4bxkCec",
+      category: "tech",
+    },
+    {
+      name: "Honor Pad X9",
+      price: "₹15,126",
+      reviews: "4.3 (1.8K)",
+      link: "https://amzn.to/4dGv44g",
+      category: "tech",
+    },
+    {
+      name: "OnePlus Nord Buds 3r",
+      price: "₹1,599",
+      reviews: "4.2 (40K)",
+      link: "https://amzn.to/3NJisyH",
+      category: "tech",
+    },
+    {
+      name: "Boat Wave Call 3 Smartwatch",
+      price: "₹1,399",
+      reviews: "4.1 (25K)",
+      link: "https://amzn.to/4c3MQgE",
+      category: "tech",
     },
 
-    lifestyle: {
-      shoes: [
-        {
-          name: "U.S. Polo Assn. Men's Shoe",
-          price: "₹2199",
-          reviews: "⭐ 4.4 (1K)",
-          image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff",
-          link: "https://amzn.to/4bwnyHX",
-        },
-      ],
-      watches: [
-        {
-          name: "Titan Karishma Watch",
-          price: "₹1994",
-          reviews: "⭐ 4.4 (1.4K)",
-          image: "https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b",
-          link: "#",
-        },
-      ],
+    // LIFESTYLE
+    {
+      name: "U.S. Polo Assn. Men's Shoes",
+      price: "₹2,199",
+      reviews: "4.4 (1K)",
+      link: "https://amzn.to/4bwnyHX",
+      category: "lifestyle",
     },
-  };
+    {
+      name: "Titan Karishma Watch",
+      price: "₹1,994",
+      reviews: "4.4 (1.4K)",
+      link: "https://amzn.to/4t1w7Ae",
+      category: "lifestyle",
+    },
 
-  const filter = (arr) =>
-    arr.filter((p) =>
-      p.name.toLowerCase().includes(search.toLowerCase())
-    );
+    // TRENDING
+    {
+      name: "HealthSense Kitchen Weighing Machine",
+      price: "₹699",
+      reviews: "4.1 (8.3K)",
+      link: "https://amzn.to/3NnDq6o",
+      category: "trending",
+    },
+  ];
 
-  const Card = ({ p }) => (
-    <div
-      style={{
-        minWidth: "230px",
-        background: "rgba(255,255,255,0.05)",
-        backdropFilter: "blur(10px)",
-        borderRadius: "20px",
-        padding: "15px",
-        transition: "0.3s",
-        cursor: "pointer",
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.transform = "scale(1.06)";
-        e.currentTarget.style.boxShadow = "0 0 25px rgba(255,255,255,0.2)";
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.transform = "scale(1)";
-        e.currentTarget.style.boxShadow = "none";
-      }}
-    >
-      <img
-        src={p.image}
-        style={{
-          width: "100%",
-          height: "150px",
-          objectFit: "cover",
-          borderRadius: "12px",
-        }}
-      />
-      <h3 style={{ marginTop: "10px" }}>{p.name}</h3>
-      <p style={{ color: "#aaa" }}>{p.price}</p>
-      <p style={{ fontSize: "14px" }}>{p.reviews}</p>
-
-      <a href={p.link} target="_blank">
-        <button
-          style={{
-            width: "100%",
-            marginTop: "10px",
-            padding: "10px",
-            borderRadius: "10px",
-            border: "none",
-            background: "white",
-            color: "black",
-            fontWeight: "bold",
-          }}
-        >
-          View Deal 🔥
-        </button>
-      </a>
-    </div>
+  const filtered = products.filter((p) =>
+    p.name.toLowerCase().includes(search.toLowerCase())
   );
 
-  const Row = ({ title, items }) => (
-    <div style={{ marginBottom: "40px" }}>
-      <h2>{title}</h2>
+  const renderSection = (title, key) => (
+    <div id={key} style={{ marginTop: "50px" }}>
+      <h2 style={{ fontSize: "28px", marginBottom: "15px" }}>{title}</h2>
+
       <div
         style={{
           display: "flex",
-          gap: "20px",
           overflowX: "auto",
+          gap: "15px",
           paddingBottom: "10px",
         }}
       >
-        {filter(items).map((p, i) => (
-          <Card key={i} p={p} />
-        ))}
+        {filtered
+          .filter((p) => p.category === key)
+          .map((p, i) => (
+            <div
+              key={i}
+              style={{
+                minWidth: "250px",
+                background: "#111",
+                padding: "15px",
+                borderRadius: "15px",
+                boxShadow: "0 0 10px rgba(255,255,255,0.1)",
+                transition: "0.3s",
+              }}
+            >
+              <h3>{p.name}</h3>
+              <p>{p.price}</p>
+              <p>{p.reviews}</p>
+
+              <a href={p.link} target="_blank">
+                <button
+                  style={{
+                    marginTop: "10px",
+                    padding: "10px",
+                    width: "100%",
+                    borderRadius: "10px",
+                    border: "none",
+                    background: "white",
+                    color: "black",
+                    cursor: "pointer",
+                  }}
+                >
+                  View Deal 🔥
+                </button>
+              </a>
+            </div>
+          ))}
       </div>
     </div>
   );
@@ -174,108 +134,64 @@ export default function Home() {
   return (
     <div
       style={{
-        background: "#000",
+        background: "black",
         color: "white",
-        minHeight: "100vh",
         padding: "20px",
+        minHeight: "100vh",
+        fontFamily: "sans-serif",
       }}
     >
-      {/* NAV */}
+      {/* TOP BAR */}
       <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <div style={{ display: "flex", gap: "20px" }}>
+        <div style={{ display: "flex", gap: "15px" }}>
           <a href="#tech">Tech</a>
           <a href="#lifestyle">Lifestyle</a>
-          <a href="#trending">Trending 🔥</a>
+          <a href="#trending">Trending🔥</a>
         </div>
 
-        <h1 style={{ position: "absolute", left: "50%", transform: "translateX(-50%)" }}>
-          TREAZURE
-        </h1>
-
-        <a 
-  href="mailto:themk1762010@gmail.com?subject=Regarding Treazure&body=Hi, I visited your website..."
-  style={{ textDecoration: "none", color: "white" }}
->
-  Contact Us
-</a>
-<<<<<<< HEAD
-  
-=======
->>>>>>> c51db13 (first commit with icon)
+        <a
+          href="mailto:themk1762010@gmail.com?subject=Regarding Treazure&body=Hi, I visited your website"
+          style={{ textDecoration: "none", color: "white" }}
+        >
+          Contact Us
+        </a>
       </div>
 
+      {/* TITLE */}
+      <h1 style={{ textAlign: "center", fontSize: "40px", marginTop: "20px" }}>
+        TREAZURE
+      </h1>
+
       {/* SEARCH */}
-      <div style={{ textAlign: "center", marginTop: "40px" }}>
+      <div style={{ textAlign: "center", marginTop: "20px" }}>
         <input
           placeholder="Search products..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           style={{
             padding: "15px",
-            width: "50%",
+            width: "60%",
             borderRadius: "30px",
             border: "none",
+            outline: "none",
             background: "#111",
             color: "white",
           }}
         />
-        <p style={{ color: "#aaa", marginTop: "10px" }}>
-          Smart deals. Zero waste. Only the best picks.
-        </p>
       </div>
 
-      {/* FILTER BUTTONS */}
-      <div style={{ textAlign: "center", margin: "20px 0" }}>
-        {["all", "tech", "lifestyle", "trending"].map((c) => (
-          <button
-            key={c}
-            onClick={() => setActive(c)}
-            style={{
-              margin: "5px",
-              padding: "8px 15px",
-              borderRadius: "20px",
-              border: "none",
-              background: active === c ? "white" : "#222",
-              color: active === c ? "black" : "white",
-            }}
-          >
-            {c.toUpperCase()}
-          </button>
-        ))}
-      </div>
+      {/* TRUST TEXT */}
+      <p style={{ textAlign: "center", marginTop: "15px", color: "#aaa" }}>
+        Smart deals. Zero waste. Only the best picks.
+      </p>
+      <p style={{ textAlign: "center", color: "#aaa" }}>
+        Every product is handpicked for quality, value and trust.
+      </p>
 
-      {/* TRENDING */}
-      {(active === "all" || active === "trending") && (
-        <div id="trending">
-          <Row title="🔥 Trending" items={data.trending} />
-        </div>
-      )}
-
-      {/* TECH */}
-      {(active === "all" || active === "tech") && (
-        <div id="tech">
-          <h1>🎧 Tech</h1>
-          <Row title="Earbuds" items={data.tech.earbuds} />
-          <Row title="Phones" items={data.tech.phones} />
-          <Row title="Speakers" items={data.tech.speakers} />
-          <Row title="Laptops" items={data.tech.laptops} />
-          <Row title="Tabs" items={data.tech.tabs} />
-          <Row title="Smartwatches" items={data.tech.watches} />
-        </div>
-      )}
-
-      {/* LIFESTYLE */}
-      {(active === "all" || active === "lifestyle") && (
-        <div id="lifestyle">
-          <h1>👟 Lifestyle</h1>
-          <Row title="Shoes" items={data.lifestyle.shoes} />
-          <Row title="Watches" items={data.lifestyle.watches} />
-        </div>
-      )}
+      {/* SECTIONS */}
+      {renderSection("TECH", "tech")}
+      {renderSection("LIFESTYLE", "lifestyle")}
+      {renderSection("TRENDING🔥", "trending")}
     </div>
   );
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> c51db13 (first commit with icon)
